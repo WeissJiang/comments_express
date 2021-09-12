@@ -1,0 +1,140 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-image: url('https://r1.ilikewallpaper.net/iphone-12-pro-wallpapers/download-103220/selective-photograph-of-branches-with-flower.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: antiquewhite;
+            font-family: sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px 40px;
+            border-radius: 5px;
+        }
+
+        .container h1{
+            text-align: center;
+            color: antiquewhite;
+            margin-bottom: 30px;
+        }
+
+        .container .btn{
+            cursor: pointer;
+            width: 100%;
+            background-color: antiquewhite;
+            padding: 15px;
+            font-size: 18px;
+            font-family: inherit;
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .container .btn:focus{
+            outline: 0;
+        }
+
+        .container .btn:active{
+            transform: scale(0.98);
+        }
+
+        .container a{
+            text-decoration: none;
+            color: lightblue;
+        }
+
+        .container .text{
+            margin-top: 30px;
+        }
+
+        .container .form-control{
+            width: 300px;
+            margin: 20px 0 40px;
+            position: relative;
+        }
+
+        .form-control input{
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px solid antiquewhite;
+            /* 为了使输入框独占一行，需要设置{display: block;} */
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 18px;
+            color: antiquewhite;
+        }
+
+        .form-control input:focus{
+            outline: 0;
+            border-color: lightblue;
+        }
+
+        .form-control label{
+            position: absolute;
+            top: 16px;
+            left: 0;
+        }
+
+        .form-control label span {
+            display: inline-block;
+            font-size: 14px;
+            min-width: 5px;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .form-control input:focus + label span,
+        .form-control input:valid + label span {
+            color: lightblue;
+            transform: translateY(-30px);
+        }
+    </style>
+    <title>Post</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Leave a comment</h1>
+        <form action="/pinglun" method="post">
+            <div class="form-control">
+                <input name="name" type="text" id="input_name" required>
+                <label for="">User Name</label>
+            </div>
+            <div class="form-control">
+                <input type="text" name="message" id="textarea_message" required>
+                <label for="">Comments</label>
+            </div>
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+    <script>
+        const labels = document.querySelectorAll('.form-control label')
+        labels.forEach(function (label) {
+            console.log(label.innerText.split('').map(function (letter, index) {
+                return `<span style="transition-delay:${index * 50}ms">${letter}</span>`
+        }).join(''))
+
+        label.innerHTML = label.innerText
+            .split('')
+            .map(function (letter, index) {
+            return `<span style="transition-delay:${index * 50}ms">${letter}</span>`
+            })
+            .join('')
+        })
+    </script>
+</body>
+</html>
